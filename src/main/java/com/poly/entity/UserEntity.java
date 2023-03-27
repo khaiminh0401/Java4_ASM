@@ -27,4 +27,5 @@ public class UserEntity {
 	private String phone;
 	@Column(name="isAdmin")
 	private boolean isAdmin;
+	
 }

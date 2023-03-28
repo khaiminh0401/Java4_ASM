@@ -1,6 +1,6 @@
 <header class="main-header" role="header">
 	<div class="logo">
-		<a href="#">Online Entertainment</a>
+		<a href="#">Zuhot store</a>
 	</div>
 	<a href="#menu" class="menu-link"></a>
 	<nav id="menu" class="main-nav" role="navigation">

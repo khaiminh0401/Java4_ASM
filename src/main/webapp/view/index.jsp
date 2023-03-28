@@ -291,7 +291,7 @@ a.menu-link { display: none; }
 </head>
 <body>
 	<jsp:include page="./navbar.jsp"></jsp:include>
-	<h1>body</h1>
+		<jsp:include page="./trangchu.jsp"></jsp:include>
 	<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

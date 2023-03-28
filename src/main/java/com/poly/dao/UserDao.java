@@ -11,7 +11,7 @@ import jakarta.persistence.EntityManagerFactory;
 public class UserDao {
 	private EntityManager em = EntityManagerUtils.getEntityManager();
 	public List<UserEntity> selectAll(){
-		return em.createQuery("select u from UserEntity u", UserEntity.class).getResultList();
+		return em.createQuery("select u from SanPhamEntity u", UserEntity.class).getResultList();
 	}
 	
 }

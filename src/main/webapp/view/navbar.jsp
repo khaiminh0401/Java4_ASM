@@ -5,18 +5,22 @@
 	<a href="#menu" class="menu-link"></a>
 	<nav id="menu" class="main-nav" role="navigation">
 		<ul class="main-menu">
-			<li><a href="#Home">Home</a></li>
-			<li><a href="#Myfavorites">My Favorites</a></li>
-			<li class="has-submenu"><a href="#Myaccount">My Account</a>
+			<li><a href="#dt">Điện thoại</a></li>
+			<li><a href="#laptop">Laptop</a></li>
+			<li><a href="#taplet">Tablet</a></li>
+			<li><a href="#pc">PC</a></li>
+			<li class="has-submenu"><a href="#phukien">Phụ kiện</a>
 				<ul class="sub-menu">
-					<li><a href="#Myaccount1">Login</a></li>
-					<li><a href="#Myaccount2">Forgot Password</a></li>
-					<li><a href="#Myaccount3">Registration</a></li>
-					<li><a href="#Myaccount4">Logoff</a></li>
-					<li><a href="#Myaccount5">Change Password</a></li>
-					<li><a href="#Myaccount6">Edit Profile</a></li>
+					<li><a href="#phukien1">Chuột</a></li>
+					<li><a href="#banphim">Bàn phím</a></li>
+					<li><a href="#capsac">Cáp sạc</a></li>
+					<li><a href="#sacduphong">Sạc dự phòng</a></li>
+					<li><a href="#cusac">Củ sạc</a></li>
+					<li><a href="#taynghe">Tay nghe</a></li>
 				</ul>
 			</li>
+			<li><a href="#signin">Sign in</a></li>
+			<li><a href="#signup">Sign up</a></li>
 		</ul>
 	</nav>
 </header>

@@ -19,4 +19,8 @@ public class SanPhamDao {
 		String sql = "select sp from HinhAnhSanPhamEntity sp";
 		return em.createQuery(sql, HinhAnhSanPhamEntity.class).getResultList();
 	}
+	public SanPhamEntity getById(int id) {
+		EntityManager em = EntityManagerUtils.getEntityManager();
+		return em.find(SanPhamEntity.class, id);
+	}
 }

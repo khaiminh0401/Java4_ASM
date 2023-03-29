@@ -4,7 +4,7 @@
 </style>
 <div class="container-detail">
     <div class="row">
-        <h4 class="name-phone">Sản phẩm ${sanpham.tensp}</h4>
+        <h4 class="name-phone">Sản phẩm ${sanpham.getName()}</h4>
         <hr class="w-100">
         <div class="col-7">
             <div id="detail-carousel" class="carousel slide" data-bs-ride="carousel">

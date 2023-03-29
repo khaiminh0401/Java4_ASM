@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.poly.controller.HomeController;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
 import com.poly.entity.SanPhamEntity;
@@ -19,17 +20,20 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Java4_ASM extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		String uri = req.getRequestURI();
 		String[] paths = uri.split("/");
 		String file = "trangchu";
-		System.out.println(file);
-		if (paths.length>2) {
+		if (paths.length > 2) {
 			file = paths[2];
 		}
 		req.setAttribute("page", file);
+		switch (file) {
+		case "trangchu":
+			new HomeController(req, req.getMethod());
+		}
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}
 

@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <<style>
 .option-promo{display:flex;list-style:none}.option-promo li{background-image:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Background/bg-danh-muc-desktop.png");background-repeat:no-repeat;background-size:100% 100%;width:calc(33.3333333333% - 16px);margin-right:20px;background-color:#fff;border-radius:12px;padding:15px 0}.option-promo li a img{display:inline-block;vertical-align:middle;width:auto;height:70px}.option-promo li a{display:block;overflow:hidden;text-decoration:none;padding-left:30px}.option-promo li a span{display:inline-block;vertical-align:middle;overflow:hidden;color:#222;font-size:22px;line-height:28px;text-align:left;margin-left:10px;max-width:65%}.big-baner{overflow:hidden}.big-baner img{width:100%;height:-moz-max-content;height:max-content}#carouselMain{width:70%;display:block;margin:0 auto}.carousel-inner{border-radius:30px}.section-deal img{width:100%}.col-1{width:10%}.box-list{position:relative}.box-list::after{position:absolute}.name-box{overflow:hidden;line-height:36px;font-size:22px;padding:15px}.name-box::before{content:"";background-size:100%;width:48px;height:48px;position:absolute;top:0;left:0;background-image:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Icon/mut.png")}.name-box::after{content:"";width:128px;height:50px;position:absolute;right:135px;top:0;background-size:100%;background-image:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Background/bg-top1-danh-muc-noi-bat.png");background-repeat:no-repeat}.img-respon{width:50% !important}@media screen and (max-width: 768px){.option-promo{flex-direction:row;flex-wrap:wrap;align-items:center}.option-promo li{width:calc(50% - 32px);padding:16px;margin:16px}.option-promo li a img{height:50px}.box-list .row .col-1{width:20%}.img-respon{height:200px}.card-title{font-size:.9rem}}
 </style>
@@ -90,19 +91,21 @@
                     <li data-bs-target="#carouselProduct" data-bs-slide-to="1" aria-label="Second slide"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
+<%--                 <c:forEach var="sp" items="${sp}">
                     <div class="carousel-item active">
                         <div class="row d-flex justify-content-around">
-                            <div class="card col-5" ng-repeat="sp in sanpham | limitTo: 2:0">
-                                <img class="card-img-top pt-2 d-block mx-auto img-respon" src="{{sp.hinhanh}}"
+                            <div class="card col-5">
+                                <img class="card-img-top pt-2 d-block mx-auto img-respon" src="${ }"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{sp.tensp}}</h4>
-                                    <p class="card-text fw-bold text-danger">{{sp.giasp | currency:"":0}}</p>
+                                    <h4 class="card-title">${sp.getSanPham().getName()}</h4>
+                                    <p class="card-text fw-bold text-danger">${sp.getSanPham().getPrice()}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
+                    </c:forEach> --%>
+                   <!--  <div class="carousel-item">
                         <div class="row d-flex justify-content-around">
                             <div class="card col-5" ng-repeat="sp in sanpham | limitTo: 2:2">
                                 <img class="card-img-top pt-2 d-block mx-auto img-respon" src="{{sp.hinhanh}}"
@@ -113,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct"
                     data-bs-slide="prev">
@@ -257,6 +260,22 @@
                 </div>
             </div>
         </section>
+        <div class=" container">                        
+        	<div class="row">
+         		<c:forEach var="sp" items="${sp}">
+                            <div class="col-lg-3 p-2">
+                            	<div class="card">
+                                	<img class="" src="${sp.url}"
+                                    	alt="Card image cap">
+                               		<div class="card-body">
+                                    	<h4 class="card-title">${sp.getSanPham().getName()}</h4>
+                                    	<p class="card-text fw-bold text-danger">${sp.getSanPham().getPrice()}</p>
+                                	</div>
+                                </div>
+                            </div>
+         		</c:forEach> 
+         	</div>
+        </div>
         <section style="height: 300px;">
             <h4>CHUYÊN GIA THƯƠNG HIỆU</h4>
             <div class="row">

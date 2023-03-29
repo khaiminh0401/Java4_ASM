@@ -14,25 +14,23 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 @WebServlet("/")
-public class Java4_ASM extends HttpServlet{
+public class Java4_ASM extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		String uri = req.getRequestURI();
-//		String [] paths =uri.split("/");
-//		String file = paths[2];
-//		if(file == "home") {
-//			req.setAttribute("sanpham", new SanPhamDao().selectAll());
-//		}
-//		req.setAttribute("body", file);
-		SanPhamDao dao = new SanPhamDao();
-		List<SanPhamEntity> sp = dao.selectAll();
-		System.out.println(sp.get(0).getThuongHieu().getName());
-		System.out.println(sp.get(0).getMau().getName());
-		System.out.println(sp.get(0).getName());
+
+		String uri = req.getRequestURI();
+		String[] paths = uri.split("/");
+		String file = "trangchu";
+		System.out.println(file);
+		if (paths.length>2) {
+			file = paths[2];
+		}
+		req.setAttribute("page", file);
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}
-	
+
 }

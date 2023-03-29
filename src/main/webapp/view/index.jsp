@@ -290,8 +290,9 @@ a.menu-link { display: none; }
 <title>Zuhot store</title>
 </head>
 <body>
+<h1>${page}</h1>
 	<jsp:include page="./navbar.jsp"></jsp:include>
-		<jsp:include page="./trangchu.jsp"></jsp:include>
+		<jsp:include page="./page/${page}.jsp"></jsp:include>
 	<jsp:include page="./footer.jsp"></jsp:include>
 </body>
 </html>

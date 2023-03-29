@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
+import com.poly.entity.HinhAnhSanPhamEntity;
 import com.poly.entity.SanPhamEntity;
 
 import jakarta.servlet.ServletException;
@@ -28,10 +29,12 @@ public class Java4_ASM extends HttpServlet{
 //		}
 //		req.setAttribute("body", file);
 		SanPhamDao dao = new SanPhamDao();
-		List<SanPhamEntity> sp = dao.selectAll();
-		System.out.println(sp.get(0).getThuongHieu().getName());
-		System.out.println(sp.get(0).getMau().getName());
-		System.out.println(sp.get(0).getName());
+		List<HinhAnhSanPhamEntity> sp = dao.selectAll();
+		System.out.println(sp.get(0).getSanPham().getThuongHieu().getName());
+		System.out.println(sp.get(0).getSanPham().getMau().getName());
+		System.out.println(sp.get(0).getSanPham().getName());
+		System.out.println(sp.get(0).getUrl());
+		req.setAttribute("sp", sp);
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}
 	

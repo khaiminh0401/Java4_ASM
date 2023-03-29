@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.poly.controller.CTSPController;
 import com.poly.controller.HomeController;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
@@ -33,6 +34,9 @@ public class Java4_ASM extends HttpServlet {
 		switch (file) {
 		case "trangchu":
 			new HomeController(req, req.getMethod());
+			break;
+		case "ctsp":
+			new CTSPController(req, req.getMethod());
 		}
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}

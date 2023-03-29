@@ -265,7 +265,7 @@
          		<c:forEach var="sp" items="${sp}">
                             <div class="col-lg-3 p-2">
                             	<div class="card">
-                                	<img class="" src="${sp.url}"
+                                	<img class="" src="./img/1.png"
                                     	alt="Card image cap">
                                		<div class="card-body">
                                     	<h4 class="card-title">${sp.getSanPham().getName()}</h4>

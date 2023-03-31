@@ -265,9 +265,8 @@
          		<c:forEach var="sp" items="${sp}">
                             <div class="col-lg-3 p-2">
                             	<div class="card">
-                            		<a href="/Java4_ASM/ctsp?masp=${sp.getSanPham().getId()}">
-                                	<img class="" src="./img/1.png"
-                                    	alt="Card image cap">
+                            		<a href="/Java4_ASM/ctsp?masp=${sp.getSanPham().getId()}" style="text-decoration: none;">
+                                	<img class="w-75 h-75" src="./img/1.png">
                                		<div class="card-body">
                                     	<h4 class="card-title">${sp.getSanPham().getName()}</h4>
                                     	<p class="card-text fw-bold text-danger">${sp.getSanPham().getPrice()}</p>

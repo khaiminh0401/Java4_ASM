@@ -33,11 +33,13 @@ public class SanPhamEntity {
 	@Column(name="published_date")
 	private String published_date;
 	@Column(name="hdh")
-	private boolean hdh;
+	private String hdh;
 	@Column(name="price")
 	private float price;
 	@Column(name="quantity")
 	private int quantity;
+	@Column(name="logo")
+	private String logo;
 	@OneToMany(mappedBy = "SanPham")
 	private List<HinhAnhSanPhamEntity> HinhAnh;
 	@ManyToOne

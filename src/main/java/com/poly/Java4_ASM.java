@@ -36,10 +36,10 @@ public class Java4_ASM extends HttpServlet {
 
 		switch (file) {
 		case "trangchu":
-			new HomeController(req, req.getMethod());
+			new HomeController(req, res);
 			break;
 		case "ctsp":
-			new CTSPController(req, req.getMethod());
+			new CTSPController(req, res);
 		}
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}

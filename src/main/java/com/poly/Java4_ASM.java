@@ -42,12 +42,13 @@ public class Java4_ASM extends HttpServlet {
 			Object obj = classNew.newInstance();
 			Method method = classNew.getMethod("method"+req.getMethod(),new Class[] {HttpServletRequest.class,HttpServletResponse.class});
 			method.invoke(obj, req,res);
+			req.setAttribute("page", file);
+			req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		req.setAttribute("page", file);
-		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
+
 	}
 
 }

@@ -3,24 +3,17 @@ package com.poly.controller;
 import java.util.List;
 
 import com.poly.dao.SanPhamDao;
-import com.poly.entity.HinhAnhSanPhamEntity;
 import com.poly.entity.SanPhamEntity;
-import com.poly.model.HttpServletModel;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+public class HomeController implements InterfaceController{
 
-public class HomeController extends HttpServletModel implements InterfaceController{
-	public HomeController(HttpServletRequest req, HttpServletResponse res) {
-		super(req,res);
-		switch (req.getMethod()) {
-		case "GET":
-			methodGet();
-		}
-	}
 
 	@Override
-	public void methodGet() {
+	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		SanPhamDao dao = new SanPhamDao();
 		List<SanPhamEntity> sp = dao.selectAll();
@@ -28,19 +21,19 @@ public class HomeController extends HttpServletModel implements InterfaceControl
 	}
 
 	@Override
-	public void methodPost() {
+	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void methodPut() {
+	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void methodDelete() {
+	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		
 	}

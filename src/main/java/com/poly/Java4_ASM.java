@@ -2,10 +2,14 @@ package com.poly;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
+import org.hibernate.usertype.DynamicParameterizedType.ParameterType;
+
 import com.google.gson.Gson;
-import com.poly.controller.CTSPController;
+import com.poly.controller.CtspController;
 import com.poly.controller.HomeController;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
@@ -22,25 +26,26 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Java4_ASM extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		// TODO Auto-generated method stub
-
 		String uri = req.getRequestURI();
 		String[] paths = uri.split("/");
-		String file = "trangchu";
+		String file = "home";
 		if (paths.length > 2) {
 			file = paths[2];
 		}
-
+		String name = file.substring(0, 1).toUpperCase()+file.substring(1);
+		String pathClassController = "com.poly.controller."+name+"Controller";
+		try {
+			Class<?> classNew =Class.forName(pathClassController);
+			Object obj = classNew.newInstance();
+			Method method = classNew.getMethod("method"+req.getMethod(),new Class[] {HttpServletRequest.class,HttpServletResponse.class});
+			method.invoke(obj, req,res);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		req.setAttribute("page", file);
-
-		switch (file) {
-		case "trangchu":
-			new HomeController(req, res);
-			break;
-		case "ctsp":
-			new CTSPController(req, res);
-		}
 		req.getRequestDispatcher("/view/index.jsp").forward(req, res);
 	}
 

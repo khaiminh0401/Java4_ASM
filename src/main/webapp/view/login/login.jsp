@@ -158,7 +158,7 @@
             <div class="card-footer justify-content-end d-flex">
                 <button class="btn btn-danger btn-outline-dark m-2 fw-bold"><span class="bi-stop-btn-fill"></span>
                     Cancel</button>
-                <button class="btn btn-danger btn-outline-dark m-2 fw-bold" ng-click="login()"></span>
+                <button class="btn btn-danger btn-outline-dark m-2 fw-bold" ></span>
                     Sing Up</button>
 
             </div>

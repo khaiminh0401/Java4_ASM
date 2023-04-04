@@ -26,7 +26,7 @@
                     <div class="dropdown open" ng-if="khachhang">
                         <a class="button-link dropdown-toggle" style="cursor: pointer;"  id="dropdownKH" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                   <i class="fa fa-user-circle" aria-hidden="true"></i> {{khachhang.tenkh}}
+                                   <i class="fa fa-user-circle" aria-hidden="true"></i> ${{khachhang.tenkh}}
                                 </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownKH">
                             <a class="dropdown-item" href="#!profile">Thông tin cá nhân</a>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <!-- <a href="#" ng-if="khachhang" class="button-link" style="width: max-content;">{{khachhang.tenkh}}</a> -->
-                    <a href="#!login" ng-if="!khachhang" class="button-link">Đăng nhập</a>
+                    <a href="/Java4_ASM/login" ng-if="!khachhang" class="button-link">Đăng nhập</a>
                     <a href="#!register" ng-if="!khachhang" class="button-link">Đăng ký</a>
                 </div>
             </div>

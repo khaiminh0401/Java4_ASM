@@ -50,4 +50,7 @@ public class SanPhamEntity {
 	@ManyToOne
 	@JoinColumn(name = "mamau")
 	private MauEntity Mau;
+	
+	@OneToMany(mappedBy = "SanPham")
+	private List<GioHangEntity> GioHang;
 }

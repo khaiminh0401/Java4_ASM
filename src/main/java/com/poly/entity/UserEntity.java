@@ -1,8 +1,11 @@
 package com.poly.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +30,7 @@ public class UserEntity {
 	private String phone;
 	@Column(name="isAdmin")
 	private boolean isAdmin;
+	
+	@OneToMany(mappedBy = "Users")
+	private List<GioHangEntity> GioHang;
 }

@@ -21,7 +21,7 @@
                 </form>
             </ul>
             <div class="d-flex">
-                <a class="btn btn-default button-nav p-2 mx-2" ng-if="khachhang" href="#!cart/{{khachhang.makh}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Giỏ hàng</a>
+                <a class="btn btn-default button-nav p-2 mx-2" ng-if="khachhang" href="/Java4_ASM/cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Giỏ hàng</a>
                 <div class="header d-flex align-items-center" >
                     <div class="dropdown open" ng-if="khachhang">
                         <a class="button-link dropdown-toggle" style="cursor: pointer;"  id="dropdownKH" data-bs-toggle="dropdown" aria-haspopup="true"

@@ -234,8 +234,10 @@
 			<div class="buy">
 				<button class="btn btn-default btn-buy">Mua ngay</button>
 				<div class="w-100 d-flex flex-row" style="gap: 10px">
+				<form action="/Java4_ASM/cart" method="post">
 					<button class="flex-fill btn btn-primary p-0">Thêm vào
 						giỏ hàng</button>
+				</form>
 					<button class="flex-fill btn btn-primary p-0">
 						Trả góp qua thẻ <br>Visa, Mastercard,JCB,Amex
 					</button>

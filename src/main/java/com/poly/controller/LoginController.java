@@ -39,7 +39,7 @@ public class LoginController implements InterfaceController {
 	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		String id = req.getParameter("id");
-		String pw = req.getParameter("password");
+		String pw = req.getParameter("pa6ssword");
 		String remember = req.getParameter("remember");
 		boolean isAdmin = Boolean.valueOf(req.getParameter("isAdmin"));
 		try {

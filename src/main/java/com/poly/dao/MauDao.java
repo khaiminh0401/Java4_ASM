@@ -13,4 +13,7 @@ public class MauDao {
 		String sql = "select m from MauEntity m";
 		return em.createQuery(sql,MauEntity.class).getResultList();
 	}
+	public MauEntity findById(Integer id) {
+		return em.find(MauEntity.class, id);
+	}
 }

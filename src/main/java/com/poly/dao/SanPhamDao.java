@@ -6,6 +6,7 @@ import com.poly.commons.EntityManagerUtils;
 import com.poly.entity.HinhAnhSanPhamEntity;
 import com.poly.entity.SanPhamEntity;
 
+import com.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -28,5 +29,30 @@ public class SanPhamDao {
 		TypedQuery<SanPhamEntity> query = em.createQuery(sql,SanPhamEntity.class);
 		query.setParameter("mathuonghieu", mathuonghieu);
 		return query.getResultList();
+	}
+	public SanPhamEntity create(SanPhamEntity entity) {
+		try
+		{
+			em.getTransaction().begin();
+			em.persist(entity);// them
+			em.getTransaction().commit();
+			return entity;
+		} 
+		catch (Exception e) {
+			em.getTransaction().rollback();
+			throw new RuntimeException(e);
+		}
+	}
+	public SanPhamEntity remove(int id) {
+		try {
+			em.getTransaction().begin();
+			SanPhamEntity entity = this.getById(id);
+			em.remove(entity);
+			em.getTransaction().commit();
+			return entity;
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			throw new RuntimeException(e);
+		}
 	}
 }

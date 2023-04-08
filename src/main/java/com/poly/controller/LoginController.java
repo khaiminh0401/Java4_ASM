@@ -22,12 +22,6 @@ public class LoginController implements InterfaceController {
 
 	@Override
 	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
-//		try {
-//			req.getRequestDispatcher("/view/page/login.jsp").forward(req, res);
-//		} catch (ServletException | IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		// đọc giá trị của cookie
 		String username = CookieUtils.get("username", req);
 		String password = CookieUtils.get("password", req);
@@ -53,7 +47,6 @@ public class LoginController implements InterfaceController {
 						CookieUtils.add("username", id, hours, res);
 						CookieUtils.add("password", pw, hours, res);
 						
-					
 						res.sendRedirect("/Java4_ASM");
 						return;
 					} else {

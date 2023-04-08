@@ -14,4 +14,7 @@ public class ThuongHieuDao {
 		String sql = "select th from ThuongHieuEntity th";
 		return em.createQuery(sql,ThuongHieuEntity.class).getResultList();
 	}
+	public ThuongHieuEntity findById(Integer id) {
+		return em.find(ThuongHieuEntity.class, id);
+	}
 }

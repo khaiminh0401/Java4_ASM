@@ -2,8 +2,13 @@ package com.poly.entity;
 
 import java.util.List;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,7 +19,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+//@NamedQueries({
+//	@NamedQuery(name = "SanPhamEntity.findByKeyword", query = "Select o.sanpham where o.sanpham.name like :keyword")})
 @Entity
 @Table(name = "SanPham")
 @Getter

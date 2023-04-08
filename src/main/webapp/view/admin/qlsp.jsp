@@ -109,12 +109,15 @@
                 <button class="btn btn-danger">Xóa</button>
             </div>
         </form>
+        
         <div class="col-9">
+        <label> ${message }</label>
             <form action="">
                 <div class="mb-3">
                     <div class="input-group">
-                        <input type="text" class="form-control">
-                        <button class="btn btn-primary">Tìm kiếm</button>
+                        <input type="text" class="form-control" name="search">
+                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                      
                     </div>
                 </div>
             </form>

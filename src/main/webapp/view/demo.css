@@ -1,0 +1,20 @@
+.btn-default {
+    margin-right: 10px
+}
+.box-phone{
+    display:block;
+    margin: 0 auto;
+}
+.img-thuonghieu {
+    width: auto;
+    height: 20px;
+    vertical-align: middle
+}
+
+.container-dtdd {
+    background-color: #fff
+}
+
+.star {
+    color: #ff4500
+}

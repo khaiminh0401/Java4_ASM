@@ -24,17 +24,24 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/")
-public class Java4_ASM extends HttpServlet {
+public class ServletApplication extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		// TODO Auto-generated method stub
 		String uri = req.getRequestURI();
+
 		String[] paths = uri.split("/");
+		System.out.println(uri);
 		String file = "home";
 		if (paths.length > 2) {
 			file = paths[2];
+
 		}
+//		if(file.contains(".")) {
+//			req.getRequestDispatcher("/view/"+file);
+//			return;
+//		}
 		String name = file.substring(0, 1).toUpperCase()+file.substring(1);
 		String pathClassController = "com.poly.controller."+name+"Controller";
 		try {

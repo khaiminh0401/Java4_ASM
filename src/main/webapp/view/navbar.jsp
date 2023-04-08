@@ -1,10 +1,10 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <style>
-.logo{width:228px}#nav-header::before{background:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Background/hoa-mai.png");background-repeat:no-repeat;background-size:100%}.button-nav{background-color:#2fcc76 !important}.header{width:28%}.color-custom>*{color:#2fcc76}.button-link{padding:0px 21px;text-align:center;color:#000;text-decoration:none}.navbar-link{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;width:100%}
+.logo{width:100%}#nav-header::before{background:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Background/hoa-mai.png");background-repeat:no-repeat;background-size:100%}.button-nav{background-color:#2fcc76 !important}.header{width:28%}.color-custom>*{color:#2fcc76}.button-link{padding:0px 21px;text-align:center;color:#000;text-decoration:none}.navbar-link{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;width:100%}.nav-link{color:black}
 </style>
 <nav class="navbar navbar-expand-md navbar-warning" style="background-color: white;" ng-controller="navCtrl"id="nav-header">
     <div class="container">
-        <a class="navbar-brand me-5" href="/Java4_ASM"><img class="logo img-fluid" src="" alt="logo"></a>
+        <a class="navbar-brand me-5" style="width:10%" href="/Java4_ASM"><img class="logo img-fluid" src="https://media.istockphoto.com/id/1280464957/vector/cpo-letter-for-your-best-business-symbol.jpg?s=612x612&w=0&k=20&c=3UJtNY4MrHwZK4ekSD6jrbrXzGhjNommKpHwAK0MSh4=" alt="logo"></a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -54,10 +54,7 @@
         <div class="collapse color-custom navbar-collapse" id="collapsibleNav">
             <ul class="navbar-nav navbar-link me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#!dtdd?th=all&page=1" ><i class="fa-solid fa-mobile-screen-button"></i> Điện thoại</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-laptop"></i> Laptop</a>
+                    <a class="nav-link" href="/Java4_ASM/laptop"><i class="fa-solid fa-laptop"></i> Laptop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa-solid fa-tablet"></i> Tablet</a>

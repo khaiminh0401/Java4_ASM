@@ -22,7 +22,8 @@ public class ThuongHieuEntity {
 	private int id;
 	@Column(name="name")
 	private String name;
-	
+	@Column(name="logo")
+	private String logo;
 	@OneToMany(mappedBy = "ThuongHieu")
 	private List<SanPhamEntity> SanPham;
 }

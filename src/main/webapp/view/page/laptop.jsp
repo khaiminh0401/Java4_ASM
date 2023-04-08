@@ -1,6 +1,29 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-.btn-default{margin-right:10px}.img-thuonghieu{width:auto;height:20px;vertical-align:middle}.container-dtdd{background-color:#fff}.star{color:#ff4500}
+.btn-default {
+    margin-right: 10px
+}
+.box-phone{
+    display:block;
+    margin: 0 auto;
+}
+.img-thuonghieu {
+    width: auto;
+    height: 20px;
+    vertical-align: middle
+}
+.w-85{
+    width:85%;
+}
+.container-dtdd {
+    background-color: #fff
+}
+
+.star {
+    color: #ff4500
+}
 </style>
 <div class="container-dtdd">
     <div class="row g-2 mt-3">
@@ -171,27 +194,36 @@
         </div>
         <!-- button thương hiệu -->
         <div class="d-flex flex-row justify-content-start mt-3 w-100 flex-wrap">
-            <a class="btn btn-default border mb-2" href="#!dtdd?th={{th.mathuonghieu}}&page=1" style="background-color: white;padding: 6px 13px;"
-                ng-repeat="th in thuonghieu"><img src="{{th.logo}}" class="img-thuonghieu" alt=""></a>
+            <c:forEach items="${thuonghieu}" var="th">
+                <a class="btn btn-default border mb-2" href="/Java4_ASM/laptop?th=${th.getId()}" style="background-color: white;padding: 6px 13px;">
+                    <img src="${th.logo}" class="img-thuonghieu" alt="">
+                </a>
+            </c:forEach>
+
         </div>
         <!-- div phone -->
-        <section class="box-phone w-100 mt-2">
-            <div class="row d-flex flex-row" style="width: inherit;">
-                <div class="card col-4" ng-repeat="sp in sanpham | limitTo:6:begin">
-                    <img class="card-img-top img-fluid mt-2" src="{{sp.hinhanh}}" alt="Title">
-                    <div class="card-body">
-                       <a class="nav-link" href="#!dtdd/{{sp.tensp}}"><h4  class="card-title">{{sp.tensp}}</h4></a> 
-                        <p class="card-text">{{sp.giasp | currency:"":0}} VNĐ</p>
-                        <p class="star">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star text-secondary"></i>
-                        <span class="text-dark"> 300</span>
-                        </p>
+        <section class="box-phone w-85 mt-2">
+            <div class="row" >
+                <c:forEach items="${sanpham}" var="sp">
+                    <div class="card col-2 mx-2" >
+                        <img class="card-img-top img-fluid mt-2" src="${sp.getLogo()}" alt="Title">
+                        <div class="card-body">
+                        <a class="nav-link" href="/Java4_ASM/ctsp?masp=${sp.getId()}"><h4  class="card-title">${sp.getName()}</h4></a> 
+                            <p class="card-text">
+                            	<fmt:setLocale value="vi_VN" />
+								<fmt:formatNumber value="${sp.getPrice()}" type="currency" />
+                            </p>
+                            <p class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star text-secondary"></i>
+                            <span class="text-dark"> 300</span>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </c:forEach>
             </div>
             <nav aria-label="Page navigation" class="float-end">
               <ul class="pagination    ">

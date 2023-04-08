@@ -52,8 +52,8 @@ public class LoginController implements InterfaceController {
 						int hours = (remember == null) ? 0 : 15 * 24; // 0 = xóa
 						CookieUtils.add("username", id, hours, res);
 						CookieUtils.add("password", pw, hours, res);
-						req.setAttribute("user", checkEntity);
 						
+					
 						res.sendRedirect("/Java4_ASM");
 						return;
 					} else {

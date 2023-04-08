@@ -26,4 +26,7 @@ public class MauEntity {
 //	private List<SanPhamEntity> SanPham;
 	@OneToMany(mappedBy = "Mau")
 	private List<SanPhamEntity> SanPham; 
+	
+	@OneToMany(mappedBy = "Mau")
+	private List<GioHangEntity> GioHang;
 }

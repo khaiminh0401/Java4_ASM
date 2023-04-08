@@ -30,18 +30,20 @@ public class ServletApplication extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		// TODO Auto-generated method stub
 		String uri = req.getRequestURI();
-
 		String[] paths = uri.split("/");
-		System.out.println(uri);
 		String file = "home";
+		String defaultTemplate = "index";
 		if (paths.length > 2) {
 			file = paths[2];
-
+			if(paths[2].equalsIgnoreCase("admin")) {
+				defaultTemplate = "admin";
+				file="home";
+				if(paths.length>3) {
+					file = paths[3];
+				}
+			}
 		}
-//		if(file.contains(".")) {
-//			req.getRequestDispatcher("/view/"+file);
-//			return;
-//		}
+		System.out.println(defaultTemplate);
 		String name = file.substring(0, 1).toUpperCase()+file.substring(1);
 		String pathClassController = "com.poly.controller."+name+"Controller";
 		try {
@@ -50,7 +52,7 @@ public class ServletApplication extends HttpServlet {
 			Method method = classNew.getMethod("method"+req.getMethod(),new Class[] {HttpServletRequest.class,HttpServletResponse.class});
 			method.invoke(obj, req,res);
 			req.setAttribute("page", file);
-			req.getRequestDispatcher("/view/index.jsp").forward(req, res);
+			req.getRequestDispatcher("/view/"+defaultTemplate+".jsp").forward(req, res);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -208,7 +208,7 @@
                     <div class="card col-2 mx-2" >
                         <img class="card-img-top img-fluid mt-2" src="${sp.getLogo()}" alt="Title">
                         <div class="card-body">
-                        <a class="nav-link" href="/Java4_ASM/ctsp?masp=${sp.getId()}"><h4  class="card-title">${sp.getName()}</h4></a> 
+                        <a class="text-decoration-none text-dark" href="/Java4_ASM/ctsp?masp=${sp.getId()}"><h6 class="card-title">${sp.getName()}</h6></a> 
                             <p class="card-text">
                             	<fmt:setLocale value="vi_VN" />
 								<fmt:formatNumber value="${sp.getPrice()}" type="currency" />

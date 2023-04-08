@@ -28,26 +28,40 @@
 						<label>${message}</label>
 						<!-- Email input -->
 						<div class="form-outline mb-4">
-							<input value="${username}" type="text" name="username" id="form3Example3"
-								class="form-control form-control-lg"
+							<input value="${username}" type="text" name="id"
+								id="form3Example3" class="form-control form-control-lg"
 								placeholder="Enter a valid email address" /> <label
 								class="form-label" for="form3Example3">Email address</label>
 						</div>
 
 						<!-- Password input -->
 						<div class="form-outline mb-3">
-							<input value="${password}" type="password" name="password" id="form3Example4"
-								class="form-control form-control-lg"
+							<input value="${password}" type="password" name="password"
+								id="form3Example4" class="form-control form-control-lg"
 								placeholder="Enter password" /> <label class="form-label"
 								for="form3Example4">Password</label>
 						</div>
 
-						<div class="d-flex justify-content-between align-items-center">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio"
+								 name="isAdmin" id="inlineRadio1" value="true">
+							<label class="form-check-label" for="inlineRadio1">Admin</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio"
+								name="isAdmin" id="inlineRadio2" value="false">
+							<label class="form-check-label" for="inlineRadio2">User</label>
+						</div>
+						
+
+						<div
+							class="mt-3 d-flex justify-content-between align-items-center">
 							<!-- Checkbox -->
 							<div class="form-check mb-0">
-								<input name="remember" class="form-check-input me-2" type="checkbox" value=""
-									id="form2Example3" /> <label class="form-check-label"
-									for="form2Example3"> Remember me </label>
+								<input name="remember" class="form-check-input me-2"
+									type="checkbox" value="" id="form2Example3" /> <label
+									class="form-check-label" for="form2Example3"> Remember
+									me </label>
 							</div>
 							<a href="#!" class="text-body">Forgot password?</a>
 						</div>
@@ -59,10 +73,11 @@
 								Don't have an account? <a href="#!" class="link-danger">Register</a>
 							</p>
 						</div>
-
 					</form>
 				</div>
+
 			</div>
+
 		</div>
 		<div
 			class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">

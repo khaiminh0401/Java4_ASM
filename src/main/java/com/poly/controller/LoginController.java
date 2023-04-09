@@ -2,19 +2,24 @@ package com.poly.controller;
 
 import java.io.IOException;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.poly.commons.CookieUtils;
+import com.poly.commons.EntityManagerUtils;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
 import com.poly.entity.SanPhamEntity;
 import com.poly.entity.UserEntity;
 
+import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 public class LoginController implements InterfaceController {
+	EntityManager em = EntityManagerUtils.getEntityManager();
+
 	@Override
 	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
 //		try {
@@ -33,29 +38,34 @@ public class LoginController implements InterfaceController {
 	@Override
 	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-			String id = req.getParameter("username");
-			String pw = req.getParameter("password");
-			String remember = req.getParameter("remember");
-			try {
-				UserDao dao = new UserDao();
-				UserEntity user = dao.findById(id);
-				if (!user.getPassword().equals(pw)) {
-					req.setAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
+		String id = req.getParameter("id");
+		String pw = req.getParameter("password");
+		boolean remember = (req.getParameter("remember") !=null);
+		System.out.println(remember);
+		boolean isAdmin = Boolean.valueOf(req.getParameter("isAdmin"));
+		try {
+			UserEntity checkEntity = em.find(UserEntity.class, id);
+			if (checkEntity != null) {
+//				System.out.println("không tồn tại username này");
+				if (checkEntity.getPassword().equals(pw)) {
+					if (checkEntity.isAdmin() == isAdmin) {
+						req.setAttribute("message", "Đăng nhập thành công!");
+						int hours = (remember == false) ? 0 : 15 * 24; // 0 = xóa
+						CookieUtils.add("username", id, hours, res);
+						CookieUtils.add("password", pw, hours, res);
+						req.setAttribute("user", checkEntity);
+						res.sendRedirect("/Java4_ASM");
+						return;
+					} else {
+						req.setAttribute("message", "Chọn đúng quyền hạn!");
+					}
 				} else {
-					req.setAttribute("message", "Đăng nhập thành công!");
-					// set cookie ko có set sesion à nha. nghiệp vụ để nhớ đăng nhập nó dùng cookie
-					// coi lab 7 hay lab 3 gì quên rồi
-					// lam tiếp đi với lưu cookie xong đẩy lên
-					
-					int hours = (remember == null) ? 0 : 15*24; // 0 = xóa
-					CookieUtils.add("username", id, hours, res);
-					CookieUtils.add("password", pw, hours, res);
-					res.sendRedirect("/Java4_ASM");
-					return;
+					req.setAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
 				}
-			} catch (Exception e) {
-				req.setAttribute("message", "Lỗi!");
 			}
+		} catch (Exception e) {
+			req.setAttribute("message", e);
+		}
 //		}
 	}
 

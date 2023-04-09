@@ -17,5 +17,7 @@ public class UserDao {
 	public UserEntity findById(String id) {
 		return em.find(UserEntity.class, id);
 	}
-	
+	public List<UserEntity> findKH(){
+		return em.createQuery("select u from UserEntity u where u.isAdmin='false'", UserEntity.class).getResultList();
+	}
 }

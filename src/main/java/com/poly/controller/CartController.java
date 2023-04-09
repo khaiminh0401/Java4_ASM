@@ -21,11 +21,9 @@ public class CartController implements InterfaceController {
 	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		int username = Integer.parseInt(CookieUtils.get("username", req));
-		System.out.println(CookieUtils.get("username", req));
 		GioHangDao dao = new GioHangDao();
 		List<GioHangEntity> gh = dao.findAllGH(username);
 		req.setAttribute("gh", gh);
-		System.out.println(gh.get(0).getSanPham().getName());
 
 	}
 

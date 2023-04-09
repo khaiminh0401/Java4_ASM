@@ -1,8 +1,9 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .logo{width:100%}#nav-header::before{background:url("https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/newyear2023/Background/hoa-mai.png");background-repeat:no-repeat;background-size:100%}.button-nav{background-color:#2fcc76 !important}.header{width:28%}.color-custom>*{color:#2fcc76}.button-link{padding:0px 21px;text-align:center;color:#000;text-decoration:none}.navbar-link{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;width:100%}.nav-link{color:black}
 </style>
-<nav class="navbar navbar-expand-md navbar-warning" style="background-color: white;" ng-controller="navCtrl"id="nav-header">
+<nav class="navbar navbar-expand-md navbar-warning" style="background-color: white;" id="nav-header">
     <div class="container">
         <a class="navbar-brand me-5" style="width:10%" href="/Java4_ASM"><img class="logo img-fluid" src="https://media.istockphoto.com/id/1280464957/vector/cpo-letter-for-your-best-business-symbol.jpg?s=612x612&w=0&k=20&c=3UJtNY4MrHwZK4ekSD6jrbrXzGhjNommKpHwAK0MSh4=" alt="logo"></a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
@@ -35,13 +36,27 @@
                         </div>
                     </div>
                     <!-- <a href="#" ng-if="khachhang" class="button-link" style="width: max-content;">{{khachhang.tenkh}}</a> -->
-                    <a href="/Java4_ASM/login" ng-if="!khachhang" class="button-link">Đăng nhập</a>
-                    <a href="#!register" ng-if="!khachhang" class="button-link">Đăng ký</a>
+                    <a href="/Java4_ASM/login" class="button-link">Đăng nhập</a>
+                    <a href="#!register" class="button-link">Đăng ký</a>
                 </div>
             </div>
+					<c:choose>
+						<c:when test="${!empty user}">
+							<a href="#" class="button-link" style="width: max-content;">${user.fullname}
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a href="/Java4_ASM/login" class="button-link">Đăng nhập</a>
+							<a href="#!register" class="button-link">Đăng ký</a>
+						</c:otherwise>
+						
+		
+					</c:choose>
+				</div>
+			</div>
 
-        </div>
-    </div>
+		</div>
+	</div>
 </nav>
 <nav class="navbar navbar-expand-md  navbar-warning  pt-0 " style="background-color: white;">
       <div class="container">

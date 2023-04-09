@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.google.gson.Gson;
 import com.poly.commons.CookieUtils;
 import com.poly.commons.EntityManagerUtils;
 import com.poly.dao.SanPhamDao;
@@ -53,10 +52,9 @@ public class LoginController implements InterfaceController {
 					if (checkEntity.isAdmin() == isAdmin) {
 						req.setAttribute("message", "Đăng nhập thành công!");
 						int hours = (remember == false) ? 0 : 15 * 24; // 0 = xóa
-						Gson gson = new Gson();
-						System.out.println(gson.toJson(checkEntity));
-						CookieUtils.add("user", gson.toJson(checkEntity).toString(), hours, res);
-//						CookieUtils.add("password", pw, hours, res);
+						CookieUtils.add("user", id, hours, res);
+						CookieUtils.add("tenkh", checkEntity.getFullname(), hours, res);
+						CookieUtils.add("password", pw, hours, res);
 						req.setAttribute("user", checkEntity);
 						res.sendRedirect("/Java4_ASM");
 					} else {
@@ -67,8 +65,7 @@ public class LoginController implements InterfaceController {
 				}
 			}
 		} catch (Exception e) {
-//			req.setAttribute("message", e);
-			e.printStackTrace();
+			req.setAttribute("message", e);
 		}
 		return true;
 

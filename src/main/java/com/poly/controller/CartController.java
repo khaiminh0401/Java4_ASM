@@ -1,6 +1,7 @@
 package com.poly.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import com.poly.commons.CookieUtils;
@@ -16,58 +17,61 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class CartController implements InterfaceController {
-	public static String masp2 ="";
+	public static String magh = "";
+	GioHangDao dao = new GioHangDao();
+	List<GioHangEntity> gh;
+	GioHangEntity ghEntity;
+	UserEntity user;
+
 	@Override
 	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		int username = Integer.parseInt(CookieUtils.get("username", req));
-		System.out.println(CookieUtils.get("username", req));
-		GioHangDao dao = new GioHangDao();
-		List<GioHangEntity> gh = dao.findAllGH(username);
-		req.setAttribute("gh", gh);
-		System.out.println(gh.get(0).getSanPham().getName());
-		masp2 =req.getParameter("maid");
-		System.out.println(masp2);
+//		user = (UserEntity) req.getSession().getAttribute("user");
+		if (req.getParameter("kh") != null) {
+			gh = dao.findAllGH(Integer.parseInt(req.getParameter("kh")));
+			req.setAttribute("gh", gh);
+			this.methodDELETE(req, res);
+		}
 		return false;
-
 	}
 
 	@Override
 	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
-		int username = Integer.parseInt(CookieUtils.get("username", req));
-		String masp = CtspController.masp;
-		SanPhamDao daoSP = new SanPhamDao();
-		SanPhamEntity sp = daoSP.getById(Integer.parseInt(masp));
-		UserDao daoUser = new UserDao();
-		UserEntity User = daoUser.findById(String.valueOf(username));
-		try {
+		user = (UserEntity) req.getSession().getAttribute("user");
+		if (user != null) {
+			String masp = CtspController.masp;
+			SanPhamDao daoSP = new SanPhamDao();
+			SanPhamEntity sp = daoSP.getById(Integer.parseInt(masp));
+			UserDao daoUser = new UserDao();
+			UserEntity User = daoUser.findById(String.valueOf(user.getId()));
+			try {
 //			check
-			String a = "";
-			GioHangDao daoGH = new GioHangDao();
-			List<GioHangEntity> gh2 = daoGH.findAllGH(username);
-			for (int i = 0; i < gh2.size(); i++) {
-				if (gh2.get(i).getSanPham().getId() == Integer.parseInt(masp)
-						&& gh2.get(i).getUsers().getId() == username) {
-					System.out.println("Đã tồn tại");
-					a = "1";
-					this.methodGET(req, res);
-					break;
+				String a = "";
+				gh = dao.findAllGH(user.getId());
+				for (int i = 0; i < gh.size(); i++) {
+					if (gh.get(i).getSanPham().getId() == Integer.parseInt(masp)
+							&& gh.get(i).getUsers().getId() == user.getId()) {
+						System.out.println("Đã tồn tại");
+						a = "1";
+						this.methodGET(req, res);
+						break;
+					}
 				}
+				if (a == "") {
+					GioHangEntity gh = new GioHangEntity();
+					gh.setMau(null);
+					gh.setSanPham(sp);
+					gh.setSoluong(1);
+					gh.setUsers(User);
+					GioHangDao dao = new GioHangDao();
+					dao.InsertGH(gh);
+					System.out.println("thanh cong");
+					this.methodGET(req, res);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("loi");
 			}
-			if (a == "") {
-				GioHangEntity gh = new GioHangEntity();
-				gh.setMau(null);
-				gh.setSanPham(sp);
-				gh.setSoluong(1);
-				gh.setUsers(User);
-				GioHangDao dao = new GioHangDao();
-				dao.InsertGH(gh);
-				System.out.println("thanh cong");
-				this.methodGET(req, res);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("loi");
 		}
 		return false;
 	}
@@ -81,13 +85,17 @@ public class CartController implements InterfaceController {
 
 	@Override
 	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
-		System.out.println(masp2);
-		GioHangDao dao = new GioHangDao();
-		GioHangEntity gh1 = dao.getById(Integer.parseInt(masp2));
-		System.out.println(gh1.getId());
-		dao.delete(gh1);
-		System.out.println("delete thanh cong");
-	return true;
+		if (magh != null) {
+			ghEntity = dao.getById(Integer.parseInt(magh));
+			dao.delete(ghEntity);
+			user = (UserEntity) req.getSession().getAttribute("user");
+			if (user != null) {
+				gh = dao.findAllGH(user.getId());
+				req.setAttribute("gh", gh);
+				System.out.println("delete thanh cong");
+			}
+		}
+		return true;
 	}
 
 }

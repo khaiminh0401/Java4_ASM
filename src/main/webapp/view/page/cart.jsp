@@ -19,7 +19,7 @@
 					<c:forEach var="gh" items="${gh}">
 	                    <div class="card d-flex flex-row rounded-3 mb-4" ng-repeat="giohang in cart ">
 	                        <div class="card-header custom-header d-flex flex-column justify-content-center">
-	                            <input type="checkbox" ng-model="giohang.isChon">
+	                            <a href="/Java4_ASM/card?magh=${gh.id} }"><input type="checkbox" ></a>
 	                        </div>
 	                        <div class="card-body p-4">
 	                            <div class="row d-flex justify-content-between align-items-center">
@@ -58,7 +58,7 @@
 	                                    </h5>
 	                                </div>
 	                                <div class="col-md-1 col-lg-1 col-xl-1 text-end"> 	
-	                                    <button onclick="deleteGH()" class="text-danger"><a href="/Java4_ASM/cart"><i
+	                                    <button class="text-danger"><a href="/Java4_ASM/cart?maid=${gh.id}"  onclick="deleteGH()"><i
 	                                            class="fas fa-trash fa-lg"></i></a></button>
 	                                </div>
 	                            </div>
@@ -77,24 +77,3 @@
         </div>
     </section>
 </div>
-<script type="text/javascript">
-	function deleteGH(){
-		var obj = {};
-		$("#form").serializeArray().forEach(s=>{
-			obj = {...obj,[s.name]:s.value};
-		})
-		console.log(1);
-/* 		$("#form").attr("method","put");
-		$("#form").submit(); */
-/* 		await axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
- */  		$.ajax({
-			type: "DELETE",
-			url: "/Java4_ASM/cart?"+$("#form").serialize(),
-			async:false,
-			data:{},
-			success: function(data, textStatus, jqXHR) {
-			 	alert('everything was OK');
-			}
-		});  
-	}
-</script>

@@ -58,5 +58,6 @@ public class SanPhamEntity {
 	
 	@OneToMany(mappedBy = "SanPham")
 	private List<GioHangEntity> GioHang;
-	
+	@OneToMany(mappedBy = "SanPham")
+	private List<CTDHEntity> CTDH;
 }

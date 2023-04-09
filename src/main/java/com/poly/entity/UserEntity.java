@@ -33,4 +33,9 @@ public class UserEntity {
 	
 	@OneToMany(mappedBy = "Users")
 	private List<GioHangEntity> GioHang;
+	
+	@OneToMany(mappedBy = "user")
+	private List<DonHangEntity> DonHang;
+	
+	
 }

@@ -74,7 +74,7 @@
 			</ul>
 			<div class="d-flex">
 				<a class="btn btn-default button-nav p-2 mx-2" ng-if="khachhang"
-					href="/Java4_ASM/cart"><i class="fa fa-cart-arrow-down"
+					href="/Java4_ASM/cart?kh=${sessionScope.user.id}"><i class="fa fa-cart-arrow-down"
 					aria-hidden="true"></i> Giỏ hàng</a>
 				<div class="header d-flex align-items-center">
 					<c:choose>
@@ -89,8 +89,9 @@
 									<a class="dropdown-item" href="#!profile">Thông tin cá nhân</a>
 									<a class="dropdown-item"
 										href="#!changePassword/{{khachhang.makh}}">Đổi mật khẩu</a>
-									<button class="dropdown-item" ng-click="logout()">Đăng
-										xuất</button>
+									<button class="dropdown-item" ng-click="logout()">
+										<a href="/Java4_ASM?logout=logout"> Đăng xuất</a>
+									</button>
 								</div>
 							</div>
 						</c:when>

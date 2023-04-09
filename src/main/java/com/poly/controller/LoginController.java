@@ -58,7 +58,7 @@ public class LoginController implements InterfaceController {
 						CookieUtils.add("user", gson.toJson(checkEntity).toString(), hours, res);
 //						CookieUtils.add("password", pw, hours, res);
 						req.setAttribute("user", checkEntity);
-						res.sendRedirect("/Java4_ASM");
+						res.sendRedirect("/Java4_ASM/");
 					} else {
 						req.setAttribute("message", "Chọn đúng quyền hạn!");
 					}

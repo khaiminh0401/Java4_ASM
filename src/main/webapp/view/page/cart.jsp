@@ -58,7 +58,7 @@
 	                                    </h5>
 	                                </div>
 	                                <div class="col-md-1 col-lg-1 col-xl-1 text-end"> 	
-	                                    <button onclick="deleteGH()" class="text-danger"><a href="/Java4_ASM/cart"><i
+	                                    <button class="text-danger"><a href="/Java4_ASM/cart?maid=${gh.id}"  onclick="deleteGH()"><i
 	                                            class="fas fa-trash fa-lg"></i></a></button>
 	                                </div>
 	                            </div>
@@ -77,24 +77,3 @@
         </div>
     </section>
 </div>
-<script type="text/javascript">
-	function deleteGH(){
-		var obj = {};
-		$("#form").serializeArray().forEach(s=>{
-			obj = {...obj,[s.name]:s.value};
-		})
-		console.log(1);
-/* 		$("#form").attr("method","put");
-		$("#form").submit(); */
-/* 		await axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
- */  		$.ajax({
-			type: "DELETE",
-			url: "/Java4_ASM/cart?"+$("#form").serialize(),
-			async:false,
-			data:{},
-			success: function(data, textStatus, jqXHR) {
-			 	alert('everything was OK');
-			}
-		});  
-	}
-</script>

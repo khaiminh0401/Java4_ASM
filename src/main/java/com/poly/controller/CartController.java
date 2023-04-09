@@ -1,6 +1,7 @@
 package com.poly.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import com.poly.commons.CookieUtils;
@@ -16,18 +17,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class CartController implements InterfaceController {
-	public static String masp2 ="";
+	public static String magh = "";
+	GioHangDao dao = new GioHangDao();
+	List<GioHangEntity> gh;
+	GioHangEntity ghEntity;
+	
 	@Override
 	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		int username = Integer.parseInt(CookieUtils.get("username", req));
-		System.out.println(CookieUtils.get("username", req));
-		GioHangDao dao = new GioHangDao();
-		List<GioHangEntity> gh = dao.findAllGH(username);
+		gh = dao.findAllGH(username);
 		req.setAttribute("gh", gh);
-		System.out.println(gh.get(0).getSanPham().getName());
-		masp2 =req.getParameter("maid");
-		System.out.println(masp2);
+		magh = req.getParameter("maid");
+		System.out.println(magh);
+		this.methodDELETE(req, res);
 		return false;
 
 	}
@@ -43,11 +46,10 @@ public class CartController implements InterfaceController {
 		try {
 //			check
 			String a = "";
-			GioHangDao daoGH = new GioHangDao();
-			List<GioHangEntity> gh2 = daoGH.findAllGH(username);
-			for (int i = 0; i < gh2.size(); i++) {
-				if (gh2.get(i).getSanPham().getId() == Integer.parseInt(masp)
-						&& gh2.get(i).getUsers().getId() == username) {
+			gh = dao.findAllGH(username);
+			for (int i = 0; i < gh.size(); i++) {
+				if (gh.get(i).getSanPham().getId() == Integer.parseInt(masp)
+						&& gh.get(i).getUsers().getId() == username) {
 					System.out.println("Đã tồn tại");
 					a = "1";
 					this.methodGET(req, res);
@@ -80,14 +82,32 @@ public class CartController implements InterfaceController {
 	}
 
 	@Override
-	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
-		System.out.println(masp2);
-		GioHangDao dao = new GioHangDao();
-		GioHangEntity gh1 = dao.getById(Integer.parseInt(masp2));
-		System.out.println(gh1.getId());
-		dao.delete(gh1);
-		System.out.println("delete thanh cong");
-	return true;
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res){
+		if (magh != null) {
+			ghEntity = dao.getById(Integer.parseInt(magh));
+			dao.delete(ghEntity);
+			int username = Integer.parseInt(CookieUtils.get("username", req));
+			gh = dao.findAllGH(username);
+			req.setAttribute("gh", gh);
+			System.out.println("delete thanh cong");
+			
+			
+			try {
+				res.setContentType("text/html");
+				PrintWriter pwriter =res.getWriter();
+				pwriter.print("<html>");
+				pwriter.print("<body>");
+				pwriter.print("<h2>Generic Servlet Example</h2>");
+				pwriter.print("Welcome to Edureka YouTube Channel");
+				pwriter.print("</body>");
+				pwriter.print("</html>");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return true;
 	}
 
 }

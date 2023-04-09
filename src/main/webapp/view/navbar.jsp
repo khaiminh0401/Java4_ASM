@@ -27,7 +27,7 @@
                     <div class="dropdown open" ng-if="khachhang">
                         <a class="button-link dropdown-toggle" style="cursor: pointer;"  id="dropdownKH" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                   <i class="fa fa-user-circle" aria-hidden="true"></i> ${user.fullname}
+                                   <i class="fa fa-user-circle" aria-hidden="true"></i> 
                                 </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownKH">
                             <a class="dropdown-item" href="#!profile">Thông tin cá nhân</a>
@@ -42,7 +42,7 @@
             </div>
 					<c:choose>
 						<c:when test="${not empty user}">
-							<a href="#" class="button-link" style="width: max-content;">${tenkh}
+							<a href="#" class="button-link" style="width: max-content;">${user.fullname}
 							</a>
 						</c:when>
 						<c:otherwise>

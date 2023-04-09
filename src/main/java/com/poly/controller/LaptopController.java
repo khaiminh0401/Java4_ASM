@@ -14,7 +14,7 @@ public class LaptopController implements InterfaceController{
 	ThuongHieuDao daoThuongHieu = new ThuongHieuDao();
 	SanPhamDao daoSanPham = new SanPhamDao();
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		List<SanPhamEntity> listSP = new ArrayList<>();
 		if(req.getParameterMap().size()==0) {
@@ -25,24 +25,25 @@ public class LaptopController implements InterfaceController{
 		}
 		req.setAttribute("sanpham", listSP);
 		req.setAttribute("thuonghieu", daoThuongHieu.findAll());
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 }

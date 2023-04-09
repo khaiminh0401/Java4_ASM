@@ -29,4 +29,39 @@ public class SanPhamDao {
 		query.setParameter("mathuonghieu", mathuonghieu);
 		return query.getResultList();
 	}
+	public List<SanPhamEntity> getByName(String name){
+		TypedQuery<SanPhamEntity> query = em.createQuery("select sp from SanPhamEntity sp where sp.name like :name",SanPhamEntity.class);
+		query.setParameter("name", name+"%");
+		return query.getResultList();
+	}
+	public void save(SanPhamEntity sp) {
+		try {
+			em.getTransaction().begin();
+			em.persist(sp);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			em.getTransaction().rollback();
+		}
+	}
+	public void update(SanPhamEntity sp) {
+		try {
+			em.getTransaction().begin();
+			em.merge(sp);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			em.getTransaction().rollback();
+		}
+	}
+	public void delete(SanPhamEntity sp) {
+		try {
+			em.getTransaction().begin();
+			em.remove(sp);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			em.getTransaction().rollback();
+		}
+	}
 }

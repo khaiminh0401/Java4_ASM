@@ -13,28 +13,29 @@ public class HomeController implements InterfaceController{
 
 
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		SanPhamDao dao = new SanPhamDao();
 		List<SanPhamEntity> sp = dao.selectAll();
 		req.setAttribute("sp", sp);
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 }

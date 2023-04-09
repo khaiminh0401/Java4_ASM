@@ -428,7 +428,7 @@
 				<c:forEach var="sp" items="${sp}">
 					<div class="col-lg-3 p-2">
 						<div class="card">
-							<a href="/Java4_ASM/Ctsp?masp=${sp.getId()}"
+							<a href="/Java4_ASM/ctsp?masp=${sp.getId()}"
 								class="text-decoration-none text-dark"> <img class="w-75 d-block mx-auto"
 								src="${sp.getLogo()}">
 								<div class="card-body">

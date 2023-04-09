@@ -28,6 +28,8 @@ public class ServletApplication extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE, OPTIONS");
+
 		// TODO Auto-generated method stub
 		String uri = req.getRequestURI();
 		String[] paths = uri.split("/");
@@ -50,9 +52,11 @@ public class ServletApplication extends HttpServlet {
 			Class<?> classNew =Class.forName(pathClassController);
 			Object obj = classNew.newInstance();
 			Method method = classNew.getMethod("method"+req.getMethod(),new Class[] {HttpServletRequest.class,HttpServletResponse.class});
-			method.invoke(obj, req,res);
-			req.setAttribute("page", file);
-			req.getRequestDispatcher("/view/"+defaultTemplate+".jsp").forward(req, res);
+			if(!(boolean)method.invoke(obj, req,res)){
+				req.setAttribute("page", file);
+				req.getRequestDispatcher("/view/"+defaultTemplate+".jsp").forward(req, res);
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

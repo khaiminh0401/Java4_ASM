@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -56,4 +57,10 @@ public class SanPhamEntity {
 	
 	@OneToMany(mappedBy = "SanPham")
 	private List<GioHangEntity> GioHang;
+	
+	@Transient
+	private int mathuonghieu;
+	
+	@Transient
+	private int mamau;
 }

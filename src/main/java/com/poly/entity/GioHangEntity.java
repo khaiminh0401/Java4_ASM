@@ -1,7 +1,12 @@
 package com.poly.entity;
 
+import jakarta.persistence.UniqueConstraint;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,28 +16,35 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name ="GioHang")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="GioHang", uniqueConstraints = { @UniqueConstraint(columnNames = { "userid", "masp" }) })
 public class GioHangEntity {
+
+
 	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="masp")
 	private SanPhamEntity SanPham;
 	
-	@Column(name="soluong")
-	private int soluong;
+	@ManyToOne
+	@JoinColumn(name="userid")
+	private UserEntity Users;
 	
 	@ManyToOne
 	@JoinColumn(name="mamau") 
 	private MauEntity Mau;
 	
-	@ManyToOne
-	@JoinColumn(name="manguoidung")
-	private UserEntity Users;
+	
+	
+	@Column(name="soluong")
+	private int soluong;
+
+
 
 }

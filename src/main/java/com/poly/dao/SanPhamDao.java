@@ -8,6 +8,7 @@ import com.poly.entity.SanPhamEntity;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 
 public class SanPhamDao {
 	EntityManager em = EntityManagerUtils.getEntityManager();
@@ -61,6 +62,7 @@ public class SanPhamDao {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
 	}

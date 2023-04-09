@@ -2,6 +2,7 @@ package com.poly.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -44,7 +45,7 @@ public class SanPhamEntity {
 	private int quantity;
 	@Column(name="logo")
 	private String logo;
-	@OneToMany(mappedBy = "SanPham")
+	@OneToMany(mappedBy = "SanPham",cascade = CascadeType.REMOVE)
 	private List<HinhAnhSanPhamEntity> HinhAnh;
 	@ManyToOne
 	@JoinColumn(name = "math")
@@ -58,9 +59,4 @@ public class SanPhamEntity {
 	@OneToMany(mappedBy = "SanPham")
 	private List<GioHangEntity> GioHang;
 	
-	@Transient
-	private int mathuonghieu;
-	
-	@Transient
-	private int mamau;
 }

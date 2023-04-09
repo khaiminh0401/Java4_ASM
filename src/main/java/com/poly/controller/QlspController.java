@@ -61,7 +61,6 @@ public class QlspController implements InterfaceController {
 	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		SanPhamEntity sp = getForm(req);
-		System.out.println(2);
 		daoSanPham.save(sp);
 		try {
 			res.sendRedirect("/Java4_ASM/admin/qlsp");
@@ -85,21 +84,22 @@ public class QlspController implements InterfaceController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		return methodGET(req, res);
+		return true;
 
 	}
 
 	@Override
 	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		SanPhamEntity sp = getForm(req);
+		SanPhamEntity sp = daoSanPham.getById(Integer.parseInt(req.getParameter("id")));
+		System.out.println(sp.getId());
 		daoSanPham.delete(sp);
-		try {
-			res.sendRedirect("/Java4_ASM/admin/qlsp");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			res.sendRedirect("/Java4_ASM/admin/qlsp");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return true;
 	}
 

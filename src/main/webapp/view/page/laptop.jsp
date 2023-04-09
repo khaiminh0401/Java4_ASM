@@ -24,6 +24,12 @@
 .star {
     color: #ff4500
 }
+.active{
+	border-color: blue !important;
+}
+.container-dtdd{
+	margin:0 50px;
+}
 </style>
 <div class="container-dtdd">
     <div class="row g-2 mt-3">
@@ -195,7 +201,7 @@
         <!-- button thương hiệu -->
         <div class="d-flex flex-row justify-content-start mt-3 w-100 flex-wrap">
             <c:forEach items="${thuonghieu}" var="th">
-                <a class="btn btn-default border mb-2" href="/Java4_ASM/laptop?th=${th.getId()}" style="background-color: white;padding: 6px 13px;">
+                <a class="btn btn-default border mb-2 ${th.id ==Th?'active':''}" href="/Java4_ASM/laptop?th=${th.getId()}" style="background-color: white;padding: 6px 13px;">
                     <img src="${th.logo}" class="img-thuonghieu" alt="">
                 </a>
             </c:forEach>

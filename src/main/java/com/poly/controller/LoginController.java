@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.google.gson.Gson;
 import com.poly.commons.CookieUtils;
 import com.poly.commons.EntityManagerUtils;
 import com.poly.dao.SanPhamDao;
@@ -29,7 +28,10 @@ public class LoginController implements InterfaceController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		// đọc giá trị của cookie
 		String username = CookieUtils.get("username", req);
 		String password = CookieUtils.get("password", req);
@@ -52,6 +54,7 @@ public class LoginController implements InterfaceController {
 			if (checkEntity != null) {
 //				System.out.println("không tồn tại username này");
 				if (checkEntity.getPassword().equals(pw)) {
+<<<<<<< HEAD
 
 					req.setAttribute("message", "Đăng nhập thành công!");
 
@@ -67,6 +70,18 @@ public class LoginController implements InterfaceController {
 					req.setAttribute("user", checkEntity);
 
 					res.sendRedirect("/Java4_ASM");
+=======
+					if (checkEntity.isAdmin() == isAdmin) {
+						req.setAttribute("message", "Đăng nhập thành công!");
+						int hours = (remember == false) ? 0 : 15 * 24; // 0 = xóa
+						CookieUtils.add("user", id, hours, res);
+						CookieUtils.add("tenkh", checkEntity.getFullname(), hours, res);
+						CookieUtils.add("password", pw, hours, res);
+						res.sendRedirect("/Java4_ASM");
+					} else {
+						req.setAttribute("message", "Chọn đúng quyền hạn!");
+					}
+>>>>>>> origin/master
 				} else {
 					req.setAttribute("message", "Chọn đúng quyền hạn!");
 				}
@@ -75,8 +90,7 @@ public class LoginController implements InterfaceController {
 			}
 
 		} catch (Exception e) {
-//			req.setAttribute("message", e);
-			e.printStackTrace();
+			req.setAttribute("message", e);
 		}
 		return true;
 

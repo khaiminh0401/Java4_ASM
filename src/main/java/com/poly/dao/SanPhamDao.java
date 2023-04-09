@@ -34,6 +34,7 @@ public class SanPhamDao {
 		query.setParameter("mathuonghieu", mathuonghieu);
 		return query.getResultList();
 	}
+<<<<<<< HEAD
 
 	public SanPhamEntity create(SanPhamEntity entity) {
 		try {
@@ -64,6 +65,11 @@ public class SanPhamDao {
 		TypedQuery<SanPhamEntity> query = em.createQuery("select sp from SanPhamEntity sp where sp.name like :name",
 				SanPhamEntity.class);
 		query.setParameter("name", name + "%");
+=======
+	public List<SanPhamEntity> getByName(String name){
+		TypedQuery<SanPhamEntity> query = em.createQuery("select sp from SanPhamEntity sp where sp.name like :name",SanPhamEntity.class);
+		query.setParameter("name", name+"%");
+>>>>>>> origin/master
 		return query.getResultList();
 	}
 

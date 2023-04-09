@@ -1,6 +1,7 @@
 package com.poly.controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.List;
 
 
@@ -15,30 +16,34 @@ import com.poly.entity.UserEntity;
 
 
 =======
+=======
+
+>>>>>>> origin/master
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 import com.poly.dao.MauDao;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.ThuongHieuDao;
 import com.poly.entity.SanPhamEntity;
-import com.poly.entity.UserEntity;
-
-import com.poly.dao.UserDao;
-import com.poly.entity.UserEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 public class QlspController implements InterfaceController {
 //	private EntityManager em = EntityManagerUtils.getEntityManager();
 =======
+public class QlspController implements InterfaceController {
+>>>>>>> origin/master
+=======
+
 public class QlspController implements InterfaceController {
 >>>>>>> origin/master
 	MauDao daoMau = new MauDao();
@@ -69,6 +74,7 @@ public class QlspController implements InterfaceController {
 	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 <<<<<<< HEAD
+<<<<<<< HEAD
 //		if (req.getParameter("search") == null) {
 			
 //		} else {
@@ -89,6 +95,8 @@ public class QlspController implements InterfaceController {
 		req.setAttribute("thuonghieu", daoThuongHieu.findAll());
 
 =======
+=======
+>>>>>>> origin/master
 		List<SanPhamEntity> sanpham = new ArrayList();
 		if(req.getParameter("search")==null) {
 			sanpham = daoSanPham.selectAll();
@@ -106,6 +114,9 @@ public class QlspController implements InterfaceController {
 		req.setAttribute("mau", daoMau.selectAll());
 		req.setAttribute("thuonghieu", daoThuongHieu.findAll());
 		return false;
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 	}
 
@@ -113,6 +124,7 @@ public class QlspController implements InterfaceController {
 	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		SanPhamEntity sp = getForm(req);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		try {
 			daoSanPham.create(sp);
@@ -122,6 +134,8 @@ public class QlspController implements InterfaceController {
 			req.setAttribute("message", e + "Thêm thất bại!");
 		}
 =======
+=======
+>>>>>>> origin/master
 		daoSanPham.save(sp);
 		try {
 			res.sendRedirect("/Java4_ASM/admin/qlsp");
@@ -130,6 +144,9 @@ public class QlspController implements InterfaceController {
 			e.printStackTrace();
 		}
 		return true;
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 	}
 
@@ -138,11 +155,14 @@ public class QlspController implements InterfaceController {
 		// TODO Auto-generated method stub
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	@Override
 	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 =======
+=======
+>>>>>>> origin/master
 //		try {
 			System.out.println(req.getParameterMap().size());
 			SanPhamEntity sp = getForm(req);
@@ -170,7 +190,9 @@ public class QlspController implements InterfaceController {
 //		}
 		return true;
 	}
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
-	}
 }

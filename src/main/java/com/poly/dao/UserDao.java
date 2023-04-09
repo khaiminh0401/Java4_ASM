@@ -19,6 +19,7 @@ public class UserDao {
 	public UserEntity findById(int id) {
 		return em.find(UserEntity.class, id);
 	}
+<<<<<<< HEAD
 	
 	
 
@@ -55,5 +56,9 @@ public class UserDao {
 	public List<UserEntity> findKH(){
 		return em.createQuery("select u from UserEntity u where u.isAdmin='false'", UserEntity.class).getResultList();
 
+=======
+	public List<UserEntity> findKH(){
+		return em.createQuery("select u from UserEntity u where u.isAdmin='false'", UserEntity.class).getResultList();
+>>>>>>> origin/master
 	}
 }

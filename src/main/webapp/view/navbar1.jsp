@@ -24,22 +24,19 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/Java4_ASM/admin/qlsp" class="link-dark rounded">Sản phẩm</a></li>
-            <li><a href="#" class="link-dark rounded">Khách hàng</a></li>
-            <li><a href="#" class="link-dark rounded">Reports</a></li>
+            <li><a href="/Java4_ASM/admin/qlsp" class="link-dark text-decoration-none rounded">Sản phẩm</a></li>
+            <li><a href="/Java4_ASM/admin/qlsp" class="link-dark text-decoration-none rounded">Khách hàng</a></li>
           </ul>
         </div>
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" fdprocessedid="at0cdv">
-          Dashboard
+          Thống kê
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark rounded">Annually</a></li>
+            <li><a href="#" class="link-dark text-decoration-none rounded">Đơn hàng</a></li>
+            <li><a href="#" class="link-dark text-decoration-none rounded">Doanh Thu</a></li>
           </ul>
         </div>
       </li>

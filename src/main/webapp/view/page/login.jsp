@@ -27,19 +27,6 @@
 							placeholder="Enter password" /> <label class="form-label"
 							for="form3Example4">Password</label>
 					</div>
-
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="isAdmin"
-							id="inlineRadio1" value="true"> <label
-							class="form-check-label" for="inlineRadio1">Admin</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="isAdmin"
-							id="inlineRadio2" value="false"> <label
-							class="form-check-label" for="inlineRadio2">User</label>
-					</div>
-
-
 					<div class="mt-3 d-flex justify-content-between align-items-center">
 						<!-- Checkbox -->
 						<div class="form-check mb-0">

@@ -19,7 +19,7 @@
 					<c:forEach var="gh" items="${gh}">
 	                    <div class="card d-flex flex-row rounded-3 mb-4" ng-repeat="giohang in cart ">
 	                        <div class="card-header custom-header d-flex flex-column justify-content-center">
-	                            <input type="checkbox" ng-model="giohang.isChon">
+	                            <a href="/Java4_ASM/card?magh=${gh.id} }"><input type="checkbox" ></a>
 	                        </div>
 	                        <div class="card-body p-4">
 	                            <div class="row d-flex justify-content-between align-items-center">

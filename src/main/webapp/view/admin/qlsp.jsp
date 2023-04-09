@@ -1,6 +1,7 @@
 <%@ page language="java"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div class="col-10">
     <h4>Quản lí sản phẩm</h4>
     <div class="row mt-5">
@@ -20,7 +21,8 @@
             <div class="mb-3 row">
                 <label for="" class="col-sm-4 col-form-label">Giá</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" value="${sp.price}">
+                	<fmt:formatNumber pattern="0" var="price" value="${sp.price}"></fmt:formatNumber>
+                    <input type="number" step="100000" pattern="0" class="form-control" name="price" value="${price}">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -142,7 +144,10 @@
                                 <td>${sp.id}</td>
                                 <td>${sp.name}</td>
                                 <td>${sp.quantity}</td>
-                                <td>${sp.price}</td>
+                                <td>
+                                	<fmt:setLocale value="vi_VN"/>
+                                	<fmt:formatNumber type="currency" value="${sp.price}"></fmt:formatNumber>
+                                </td>
                                 <td>${sp.published_date}</td>
                                 <td>${sp.hdh}</td>
                                 <td>${sp.ram}</td>

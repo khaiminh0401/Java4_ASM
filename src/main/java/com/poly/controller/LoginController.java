@@ -43,33 +43,37 @@ public class LoginController implements InterfaceController {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("password");
 		boolean remember = (req.getParameter("remember") !=null);
-		System.out.println(remember);
 		boolean isAdmin = Boolean.valueOf(req.getParameter("isAdmin"));
+		String uri = req.getRequestURI();
 		try {
 			UserEntity checkEntity = em.find(UserEntity.class, id);
 			if (checkEntity != null) {
 //				System.out.println("không tồn tại username này");
 				if (checkEntity.getPassword().equals(pw)) {
-					if (checkEntity.isAdmin() == isAdmin) {
+					if (!checkEntity.isAdmin() && !uri.contains("admin")) {
 						req.setAttribute("message", "Đăng nhập thành công!");
-						int hours = (remember == false) ? 0 : 15 * 24; // 0 = xóa
-						Gson gson = new Gson();
-						System.out.println(gson.toJson(checkEntity));
-						CookieUtils.add("user", gson.toJson(checkEntity).toString(), hours, res);
+//						int hours = (remember == false) ? 0 : 15 * 24; // 0 = xóa
+						req.getSession().setAttribute("user", checkEntity);
+//						CookieUtils.add("user", gson.toJson(checkEntity).toString(), hours, res);
 //						CookieUtils.add("password", pw, hours, res);
-						req.setAttribute("user", checkEntity);
-						res.sendRedirect("/Java4_ASM/");
-					} else {
-						req.setAttribute("message", "Chọn đúng quyền hạn!");
+//						req.setAttribute("user", checkEntity);
+						res.sendRedirect("/Java4_ASM");
+					} else if(checkEntity.isAdmin() && uri.contains("admin")){
+						req.getSession().setAttribute("user", checkEntity);
+						res.sendRedirect("/Java4_ASM/admin");
+					}else {
+						req.setAttribute("message", "lỗi đăng nhập");
 					}
 				} else {
 					req.setAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
+					return false;
 				}
 			}
 		} catch (Exception e) {
 //			req.setAttribute("message", e);
 			e.printStackTrace();
 		}
+		
 		return true;
 
 //		}

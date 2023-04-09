@@ -34,7 +34,7 @@ public class CartController implements InterfaceController {
 		SanPhamDao daoSP = new SanPhamDao();
 		SanPhamEntity sp = daoSP.getById(Integer.parseInt(masp));
 		UserDao daoUser = new UserDao();
-		UserEntity User = daoUser.findById(String.valueOf(username));
+		UserEntity User = daoUser.findById(Integer.valueOf(username));
 		try {
 //			check
 			String a = "";

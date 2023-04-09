@@ -41,8 +41,8 @@
                 </div>
             </div>
 					<c:choose>
-						<c:when test="${!empty user}">
-							<a href="#" class="button-link" style="width: max-content;">${user.fullname}
+						<c:when test="${not empty user}">
+							<a href="#" class="button-link" style="width: max-content;">${name}
 							</a>
 						</c:when>
 						<c:otherwise>

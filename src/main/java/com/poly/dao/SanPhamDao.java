@@ -6,6 +6,7 @@ import com.poly.commons.EntityManagerUtils;
 import com.poly.entity.HinhAnhSanPhamEntity;
 import com.poly.entity.SanPhamEntity;
 
+import com.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;

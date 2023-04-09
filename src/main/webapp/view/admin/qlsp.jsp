@@ -113,12 +113,23 @@
                 <a href="/Java4_ASM/admin/qlsp" onclick="deleteSP()" class="btn btn-danger">Xóa</a>
             </div>
         </form>
+        
         <div class="col-9">
+<<<<<<< HEAD
             <form action="/Java4_ASM/admin/qlsp" method="get">
                 <div class="mb-3">
                     <div class="input-group">
                         <input type="text" class="form-control" name="search" value="${search}">
                         <button class="btn btn-primary">Tìm kiếm</button>
+=======
+        <label> ${message }</label>
+            <form action="">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search">
+                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                      
+>>>>>>> origin/master
                     </div>
                 </div>
             </form>

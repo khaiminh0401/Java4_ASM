@@ -1,5 +1,6 @@
 package com.poly.controller;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +9,16 @@ import com.poly.dao.MauDao;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.ThuongHieuDao;
 import com.poly.entity.SanPhamEntity;
-import com.poly.entity.UserEntity;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 
 public class QlspController implements InterfaceController {
 	MauDao daoMau = new MauDao();
 	ThuongHieuDao daoThuongHieu = new ThuongHieuDao();
+
+	SanPhamEntity entity = new SanPhamEntity();
+
 	SanPhamDao daoSanPham = new SanPhamDao();
 
 	public SanPhamEntity getForm(HttpServletRequest req) {

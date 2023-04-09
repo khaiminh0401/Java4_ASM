@@ -33,7 +33,7 @@ public class QlkhController implements InterfaceController{
 		String a = req.getParameter("makh");
 		if(a !=null) {
 			UserDao daouser = new UserDao();
-			UserEntity user2 = daouser.findById(String.valueOf(a));
+			UserEntity user2 = daouser.findById(Integer.valueOf(a));
 			req.setAttribute("user2", user2);
 			System.out.println(user2.getEmail());
 			System.out.println(user2.isAdmin());

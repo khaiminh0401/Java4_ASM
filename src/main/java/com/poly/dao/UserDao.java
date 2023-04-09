@@ -19,6 +19,8 @@ public class UserDao {
 	public UserEntity findById(int id) {
 		return em.find(UserEntity.class, id);
 	}
+	
+	
 
 	public UserEntity create(UserEntity entity) {
 		try {
@@ -48,5 +50,10 @@ public class UserDao {
 			throw new RuntimeException(e);
 			// TODO: handle exception
 		}
+	}
+
+	public List<UserEntity> findKH(){
+		return em.createQuery("select u from UserEntity u where u.isAdmin='false'", UserEntity.class).getResultList();
+
 	}
 }

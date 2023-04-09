@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/poly/commons/XCookie.java=UTF-8
+encoding//src/main/java/com/poly/commons/XForm.java=UTF-8
+encoding//src/main/java/com/poly/commons/XScope.java=UTF-8
 encoding//src/main/webapp/view/footer.jsp=UTF-8
 encoding//src/main/webapp/view/navbar.jsp=UTF-8
 encoding//src/main/webapp/view/page/cart.jsp=UTF-8

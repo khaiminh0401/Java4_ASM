@@ -22,12 +22,12 @@
                 </form>
             </ul>
             <div class="d-flex">
-                <a class="btn btn-default button-nav p-2 mx-2" ng-if="khachhang" href="#!cart/{{khachhang.makh}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Giỏ hàng</a>
+                <a class="btn btn-default button-nav p-2 mx-2" ng-if="khachhang" href="/Java4_ASM/cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Giỏ hàng</a>
                 <div class="header d-flex align-items-center" >
                     <div class="dropdown open" ng-if="khachhang">
                         <a class="button-link dropdown-toggle" style="cursor: pointer;"  id="dropdownKH" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                   <i class="fa fa-user-circle" aria-hidden="true"></i> ${{khachhang.tenkh}}
+                                   <i class="fa fa-user-circle" aria-hidden="true"></i> ${user.fullname}
                                 </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownKH">
                             <a class="dropdown-item" href="#!profile">Thông tin cá nhân</a>
@@ -36,13 +36,13 @@
                         </div>
                     </div>
                     <!-- <a href="#" ng-if="khachhang" class="button-link" style="width: max-content;">{{khachhang.tenkh}}</a> -->
-                    <a href="/Java4_ASM/login" class="button-link">Đăng nhập</a>
-                    <a href="#!register" class="button-link">Đăng ký</a>
+                  <!--   <a href="/Java4_ASM/login" class="button-link">Đăng nhập</a>
+                    <a href="#!register" class="button-link">Đăng ký</a> -->
                 </div>
             </div>
 					<c:choose>
 						<c:when test="${not empty user}">
-							<a href="#" class="button-link" style="width: max-content;">${name}
+							<a href="#" class="button-link" style="width: max-content;">${tenkh}
 							</a>
 						</c:when>
 						<c:otherwise>

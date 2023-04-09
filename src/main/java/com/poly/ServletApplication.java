@@ -28,7 +28,7 @@ public class ServletApplication extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE, OPTIONS");
+		res.setHeader("Allow", "GET,POST,PUT,DELETE, OPTIONS");
 
 		// TODO Auto-generated method stub
 		String uri = req.getRequestURI();

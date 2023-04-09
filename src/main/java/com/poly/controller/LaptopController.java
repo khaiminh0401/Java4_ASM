@@ -22,6 +22,7 @@ public class LaptopController implements InterfaceController{
 		}
 		if(req.getParameter("th")!=null) {
 			listSP = daoSanPham.getByMaThuongHieu(Integer.parseInt(req.getParameter("th")));
+			req.setAttribute("Th", req.getParameter("th"));
 		}
 		req.setAttribute("sanpham", listSP);
 		req.setAttribute("thuonghieu", daoThuongHieu.findAll());

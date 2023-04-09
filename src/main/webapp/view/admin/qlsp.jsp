@@ -105,8 +105,8 @@
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Thêm</button>
-                <button type="button" onclick="update()" class="btn btn-info">Cập nhật</button>
-                <button class="btn btn-danger">Xóa</button>
+                <a href="/Java4_ASM/admin/qlsp" onclick="update()" class="btn btn-info">Cập nhật</a>
+                <a href="/Java4_ASM/admin/qlsp" onclick="deleteSP()" class="btn btn-danger">Xóa</a>
             </div>
         </form>
         <div class="col-9">
@@ -162,7 +162,7 @@
     </div>
 </div>
 <script type="text/javascript">
-	const update = async ()=>{
+	function update(){
 		var obj = {};
 		$("#form").serializeArray().forEach(s=>{
 			obj = {...obj,[s.name]:s.value};
@@ -170,15 +170,34 @@
 		console.log(1);
 /* 		$("#form").attr("method","put");
 		$("#form").submit(); */
-		axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
-/*   		$.ajax({
+/* 		await axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
+ */  		$.ajax({
 			type: "PUT",
-			url: "/Java4_ASM/admin/qlsp",
+			url: "/Java4_ASM/admin/qlsp?"+$("#form").serialize(),
 			async:false,
-			data: obj,
+			data:{},
 			success: function(data, textStatus, jqXHR) {
 			 	alert('everything was OK');
 			}
-		});  */
+		});  
+	}
+	function deleteSP(){
+		var obj = {};
+		$("#form").serializeArray().forEach(s=>{
+			obj = {...obj,[s.name]:s.value};
+		})
+		console.log(1);
+/* 		$("#form").attr("method","put");
+		$("#form").submit(); */
+/* 		await axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
+ */  		$.ajax({
+			type: "DELETE",
+			url: "/Java4_ASM/admin/qlsp?"+$("#form").serialize(),
+			async:false,
+			data:{},
+			success: function(data, textStatus, jqXHR) {
+			 	alert('everything was OK');
+			}
+		});  
 	}
 </script>

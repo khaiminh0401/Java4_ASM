@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class CartController implements InterfaceController {
-
+	public static String masp2 ="";
 	@Override
 	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
@@ -26,6 +26,8 @@ public class CartController implements InterfaceController {
 		List<GioHangEntity> gh = dao.findAllGH(username);
 		req.setAttribute("gh", gh);
 		System.out.println(gh.get(0).getSanPham().getName());
+		masp2 =req.getParameter("maid");
+		System.out.println(masp2);
 		return false;
 
 	}
@@ -79,13 +81,13 @@ public class CartController implements InterfaceController {
 
 	@Override
 	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
-		int masp =Integer.parseInt(req.getParameter("masp"));
+		System.out.println(masp2);
 		GioHangDao dao = new GioHangDao();
-		GioHangEntity gh1 = dao.getById(masp);
-		GioHangEntity gh = dao.delete(gh1);
+		GioHangEntity gh1 = dao.getById(Integer.parseInt(masp2));
+		System.out.println(gh1.getId());
+		dao.delete(gh1);
 		System.out.println("delete thanh cong");
-		return true;
-
+	return true;
 	}
 
 }

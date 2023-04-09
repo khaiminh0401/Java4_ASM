@@ -21,7 +21,7 @@ public class LoginController implements InterfaceController {
 	EntityManager em = EntityManagerUtils.getEntityManager();
 
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 //		try {
 //			req.getRequestDispatcher("/view/page/login.jsp").forward(req, res);
 //		} catch (ServletException | IOException e) {
@@ -33,10 +33,11 @@ public class LoginController implements InterfaceController {
 		String password = CookieUtils.get("password", req);
 		req.setAttribute("username", username);
 		req.setAttribute("password", password);
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		String id = req.getParameter("id");
 		String pw = req.getParameter("password");
@@ -55,7 +56,6 @@ public class LoginController implements InterfaceController {
 						CookieUtils.add("password", pw, hours, res);
 						req.setAttribute("user", checkEntity);
 						res.sendRedirect("/Java4_ASM");
-						return;
 					} else {
 						req.setAttribute("message", "Chọn đúng quyền hạn!");
 					}
@@ -66,18 +66,20 @@ public class LoginController implements InterfaceController {
 		} catch (Exception e) {
 			req.setAttribute("message", e);
 		}
+		return true;
+
 //		}
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 }

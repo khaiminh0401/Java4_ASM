@@ -18,17 +18,20 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartController implements InterfaceController {
 
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		int username = Integer.parseInt(CookieUtils.get("username", req));
+		System.out.println(CookieUtils.get("username", req));
 		GioHangDao dao = new GioHangDao();
 		List<GioHangEntity> gh = dao.findAllGH(username);
 		req.setAttribute("gh", gh);
+		System.out.println(gh.get(0).getSanPham().getName());
+		return false;
 
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		int username = Integer.parseInt(CookieUtils.get("username", req));
 		String masp = CtspController.masp;
 		SanPhamDao daoSP = new SanPhamDao();
@@ -64,17 +67,24 @@ public class CartController implements InterfaceController {
 			e.printStackTrace();
 			System.out.println("loi");
 		}
+		return false;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
+		return false;
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
-		// TODO Auto-generated method stub
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+		int masp =Integer.parseInt(req.getParameter("masp"));
+		GioHangDao dao = new GioHangDao();
+		GioHangEntity gh1 = dao.getById(masp);
+		GioHangEntity gh = dao.delete(gh1);
+		System.out.println("delete thanh cong");
+		return true;
 
 	}
 

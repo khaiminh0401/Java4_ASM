@@ -1,5 +1,9 @@
 package com.poly.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.poly.dao.MauDao;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.ThuongHieuDao;
@@ -21,6 +25,7 @@ public class QlspController implements InterfaceController {
 		sp.setRom(req.getParameter("rom"));
 		sp.setRam(req.getParameter("ram"));
 		sp.setHdh(req.getParameter("hdh"));
+		sp.setScreen(req.getParameter("screen"));
 		sp.setPublished_date(req.getParameter("published_date"));
 		sp.setPrice(Float.parseFloat(req.getParameter("price")));
 		sp.setLogo(req.getParameter("logo"));
@@ -31,35 +36,71 @@ public class QlspController implements InterfaceController {
 	}
 
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		req.setAttribute("mau", daoMau.selectAll());
-		req.setAttribute("thuonghieu", daoThuongHieu.findAll());
-		req.setAttribute("sanpham", daoSanPham.selectAll());
+		List<SanPhamEntity> sanpham = new ArrayList();
+		if(req.getParameter("search")==null) {
+			sanpham = daoSanPham.selectAll();
+		}else {
+			sanpham = daoSanPham.getByName(req.getParameter("search"));
+			req.setAttribute("search", req.getParameter("search"));
+		}
+		req.setAttribute("sanpham", sanpham);
 		String a = req.getParameter("masp");
 		if(a !=null) {
 			SanPhamDao dao = new SanPhamDao();
 			SanPhamEntity sp = dao.getById(Integer.parseInt(a));
 			req.setAttribute("sp", sp);
 		}
+		req.setAttribute("mau", daoMau.selectAll());
+		req.setAttribute("thuonghieu", daoThuongHieu.findAll());
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		SanPhamEntity sp = getForm(req);
+		System.out.println(2);
+		daoSanPham.save(sp);
+		try {
+			res.sendRedirect("/Java4_ASM/admin/qlsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
+
+//		try {
+			System.out.println(req.getParameterMap().size());
+			SanPhamEntity sp = getForm(req);
+			daoSanPham.update(sp);
+//			res.sendRedirect("/Java4_ASM/admin/qlsp");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		return methodGET(req, res);
 
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-
+		SanPhamEntity sp = getForm(req);
+		daoSanPham.delete(sp);
+		try {
+			res.sendRedirect("/Java4_ASM/admin/qlsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 }

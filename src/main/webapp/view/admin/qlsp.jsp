@@ -4,7 +4,7 @@
 <div class="col-10">
     <h4>Quản lí sản phẩm</h4>
     <div class="row mt-5">
-        <form action="/Java4_ASM/admin/qlsp" class="col-3" method="post">
+        <form action="/Java4_ASM/admin/qlsp" id="form" class="col-3" method="post">
             <div class="mb-3 row">
                 <label for="" class="col-sm-4 col-form-label">ID:</label>
                 <div class="col-sm-8">
@@ -87,7 +87,7 @@
                     <select class="form-select" name="mathuonghieu">
                         <option selected value="null">--none--</option>
                         <c:forEach var="th" items="${thuonghieu}">
-                            <option value="${th.id}">${th.name}</option>
+                            <option ${th.id==sp.getThuongHieu().id?"selected":""} value="${th.id}">${th.name}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -98,22 +98,22 @@
                     <select class="form-select" name="mamau">
                         <option selected value="null">--none--</option>
                         <c:forEach var="m" items="${mau}">
-                            <option value="${m.id}">${m.name}</option>
+                            <option ${m.id==sp.getMau().id?"selected":""} value="${m.id}">${m.name}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="mb-3">
-                <button class="btn btn-success">Thêm</button>
-                <button class="btn btn-info">Cập nhật</button>
+                <button type="submit" class="btn btn-success">Thêm</button>
+                <button type="button" onclick="update()" class="btn btn-info">Cập nhật</button>
                 <button class="btn btn-danger">Xóa</button>
             </div>
         </form>
         <div class="col-9">
-            <form action="">
+            <form action="/Java4_ASM/admin/qlsp" method="get">
                 <div class="mb-3">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="search" value="${search}">
                         <button class="btn btn-primary">Tìm kiếm</button>
                     </div>
                 </div>
@@ -133,6 +133,7 @@
                             <th>Màn hình</th>
                             <th>Thương hiệu</th>
                             <th>Màu sắc</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -160,3 +161,24 @@
         
     </div>
 </div>
+<script type="text/javascript">
+	const update = async ()=>{
+		var obj = {};
+		$("#form").serializeArray().forEach(s=>{
+			obj = {...obj,[s.name]:s.value};
+		})
+		console.log(1);
+/* 		$("#form").attr("method","put");
+		$("#form").submit(); */
+		axios.put("/Java4_ASM/admin/qlsp?"+$("#form").serialize());
+/*   		$.ajax({
+			type: "PUT",
+			url: "/Java4_ASM/admin/qlsp",
+			async:false,
+			data: obj,
+			success: function(data, textStatus, jqXHR) {
+			 	alert('everything was OK');
+			}
+		});  */
+	}
+</script>

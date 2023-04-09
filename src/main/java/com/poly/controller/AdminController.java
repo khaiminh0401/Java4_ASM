@@ -6,27 +6,27 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AdminController implements InterfaceController{
 
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 	
 }

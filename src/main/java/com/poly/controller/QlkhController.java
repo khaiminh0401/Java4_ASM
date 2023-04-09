@@ -23,7 +23,7 @@ public class QlkhController implements InterfaceController{
 		return user;
 	}
 	@Override
-	public void methodGET(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		UserDao dao = new UserDao();
 		List<UserEntity> user = dao.findKH();
@@ -38,25 +38,26 @@ public class QlkhController implements InterfaceController{
 			System.out.println(user2.getEmail());
 			System.out.println(user2.isAdmin());
 		}
+		return false;
 	}
 
 	@Override
-	public void methodPOST(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPOST(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		UserEntity user = getForm(req);
-		
+		return true;
 	}
 
 	@Override
-	public void methodPUT(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodPUT(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void methodDELETE(HttpServletRequest req, HttpServletResponse res) {
+	public boolean methodDELETE(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 }

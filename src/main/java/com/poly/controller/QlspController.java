@@ -8,7 +8,6 @@ import com.poly.dao.MauDao;
 import com.poly.dao.SanPhamDao;
 import com.poly.dao.ThuongHieuDao;
 import com.poly.entity.SanPhamEntity;
-import com.poly.entity.UserEntity;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

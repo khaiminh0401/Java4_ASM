@@ -16,6 +16,7 @@ import com.poly.dao.SanPhamDao;
 import com.poly.dao.UserDao;
 import com.poly.entity.HinhAnhSanPhamEntity;
 import com.poly.entity.SanPhamEntity;
+import com.poly.utils.StringUtils;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,7 +38,7 @@ public class ServletApplication extends HttpServlet {
 		String defaultTemplate = "index";
 		if (paths.length > 2) {
 			file = paths[2];
-			if(paths[2].equalsIgnoreCase("admin")) {
+			if(paths[2].equals("admin")) {
 				defaultTemplate = "admin";
 				file="home";
 				if(paths.length>3) {
@@ -46,7 +47,7 @@ public class ServletApplication extends HttpServlet {
 			}
 		}
 		System.out.println(defaultTemplate);
-		String name = file.substring(0, 1).toUpperCase()+file.substring(1);
+		String name = StringUtils.upperCaseFirstChar(file);
 		String pathClassController = "com.poly.controller."+name+"Controller";
 		try {
 			Class<?> classNew =Class.forName(pathClassController);
@@ -63,5 +64,4 @@ public class ServletApplication extends HttpServlet {
 		} 
 
 	}
-
 }

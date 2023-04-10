@@ -60,6 +60,7 @@ public class ServletApplication extends HttpServlet {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			req.getRequestDispatcher("/view/404.jsp");
 			e.printStackTrace();
 		} 
 

@@ -26,10 +26,12 @@ public class CartController implements InterfaceController {
 	@Override
 	public boolean methodGET(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
-//		user = (UserEntity) req.getSession().getAttribute("user");
-		if (req.getParameter("kh") != null) {
-			gh = dao.findAllGH(Integer.parseInt(req.getParameter("kh")));
+		user = (UserEntity) req.getSession().getAttribute("user");
+		if (user != null ) {
+			gh = dao.findAllGH(user.getId());
 			req.setAttribute("gh", gh);
+			magh = req.getParameter("maid");
+			System.out.println(magh +"1");
 			this.methodDELETE(req, res);
 		}
 		return false;
